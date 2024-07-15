@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> {{product.name}}</title>
+    </head>
+    <body>
+        <h1>{{product.name}}</h1>
+        <p>{{product.description}}</p>
+        <p>Price: ${{product.price}}</p>
+
+        <h1>Reviews</h1>
+        <ul>
+            {% for review in reviews %}
+                <li>
+                    <strong>{{ review.author }}</strong> ({{ review.rating }}/5):
+                    <p>{{ review.text }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+        <h1>Add a review</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <label for = "author">Author:</label>
+            <input type ="text" id="author" name="author"><br>
+            <label for = "text">Text:</label>
+            <input type = "text" id="text" name="text"><br>
+            <label for = "rating"> Rating:</label>
+            <input type = "ratting" id = "ratting" name = "rating" min = "1" max = "5"><br>
+            <button type = "submit">Add this comment</button>
+        </form>
+
+    </body>
+</html>
